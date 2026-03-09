@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kâr & Zarar — Pazaryeri Paneli</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#141928;
+  --bg2:#1b2236;
+  --bg3:#222b42;
+  --bg4:#2a3450;
+  --border:#2e3a58;
+  --border2:#3a4a6b;
+  --text:#e4e9f4;
+  --text2:#a8b4cc;
+  --text3:#6b7a99;
+  --accent:#4f8ef7;
+  --green:#34d399;
+  --green-bg:rgba(52,211,153,0.08);
+  --red:#f87171;
+  --red-bg:rgba(248,113,113,0.08);
+  --yellow:#fbbf24;
+  --card-shadow:0 4px 24px rgba(0,0,0,0.25);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;line-height:1.5}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(20,25,40,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.logo-text h1{font-size:15px;font-weight:700;letter-spacing:0.3px;color:var(--text)}
+.logo-text p{font-size:11px;color:var(--text3);margin-top:1px}
+.hbadge{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--text3);font-weight:500}
+
+main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
+
+/* FİYAT GİRİŞ */
+.price-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px 28px;
+  margin-bottom:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:16px;
+  align-items:end;
+}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase}
+.field input{
+  background:var(--bg4);
+  border:1.5px solid var(--border2);
+  border-radius:10px;
+  padding:12px 16px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:20px;
+  font-weight:600;
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+  width:100%;
+}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,142,247,0.15)}
+.field input::placeholder{color:var(--text3);font-size:16px;font-weight:400}
+
+.gross-widget{
+  background:var(--bg4);
+  border:1.5px solid var(--border2);
+  border-radius:10px;
+  padding:12px 20px;
+  min-width:180px;
+  display:flex;flex-direction:column;gap:4px;
+}
+.gross-widget .gw-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+.gross-widget .gw-val{font-size:20px;font-weight:700;color:var(--text3)}
+
+/* PLATFORM GRID */
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+
+.pcard{
+  background:var(--bg2);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.pcard:hover{transform:translateY(-2px);box-shadow:var(--card-shadow);border-color:var(--border2)}
+
+/* PLATFORM HEADER */
+.ph{
+  padding:14px 14px 12px;
+  border-bottom:1px solid var(--border);
+  border-top:3px solid var(--pc);
+}
+.ph-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:0.2px}
+
+/* KOMİSYON */
+.comm-wrap{display:flex;align-items:center;gap:6px}
+.comm-wrap span{font-size:11px;color:var(--text3);font-weight:500;white-space:nowrap}
+.comm-inp{
+  background:var(--bg);
+  border:1.5px solid var(--border2);
+  border-radius:7px;
+  padding:6px 8px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  width:60px;
+  outline:none;
+  text-align:center;
+  transition:border-color .15s;
+}
+.comm-inp:focus{border-color:var(--pc)}
+.comm-inp::placeholder{color:var(--text3);font-weight:400;font-size:12px}
+.pct-badge{font-size:12px;color:var(--text3);font-weight:600}
+
+/* KARGOFİRMASI */
+.carrier-sel{
+  width:100%;margin-top:8px;
+  background:var(--bg);
+  border:1.5px solid var(--border2);
+  border-radius:7px;
+  padding:6px 8px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  outline:none;cursor:pointer;
+  transition:border-color .15s;
+}
+.carrier-sel:focus{border-color:var(--pc)}
+.carrier-static{margin-top:8px;font-size:11px;color:var(--text3);font-weight:500;display:flex;align-items:center;gap:4px}
+.carrier-static b{color:var(--text2)}
+
+/* RESULT BODY */
+.pb{padding:14px}
+.pb-profit{font-size:26px;font-weight:700;line-height:1;margin-bottom:4px}
+.pb-margin{font-size:12px;font-weight:600;margin-bottom:12px}
+.pb-warn{font-size:10px;color:var(--yellow);margin-top:2px;font-weight:500}
+
+.divider{height:1px;background:var(--border);margin:10px 0}
+
+.bkdn{display:flex;flex-direction:column;gap:5px}
+.brow{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.brow .bl{color:var(--text3);font-weight:500}
+.brow .bv{color:var(--text2);font-weight:600}
+.brow.total{margin-top:4px;padding-top:8px;border-top:1px solid var(--border);font-size:12px}
+.brow.total .bl{color:var(--text2);font-weight:600}
+
+.pos{color:var(--green)}
+.neg{color:var(--red)}
+
+/* EMPTY */
+.empty-body{padding:28px 14px;text-align:center}
+.empty-body .ei{font-size:28px;margin-bottom:6px;opacity:.2}
+.empty-body .et{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+
+/* CARGO TAG */
+.cargo-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(79,142,247,0.1);
+  border:1px solid rgba(79,142,247,0.2);
+  border-radius:6px;
+  padding:3px 8px;
+  font-size:10px;
+  color:var(--accent);
+  font-weight:600;
+  margin-top:4px;
+}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--green);font-weight:600;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;z-index:999;box-shadow:var(--card-shadow)}
+.toast.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:1000px){
+  .pgrid{grid-template-columns:repeat(3,1fr)}
+  .price-card{grid-template-columns:1fr 1fr}
+  .gross-widget{display:none}
+}
+@media(max-width:640px){
+  header{padding:0 16px}
+  main{padding:16px 12px 60px}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .price-card{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">₺</div>
+    <div class="logo-text">
+      <h1>Kâr & Zarar</h1>
+      <p>Pazaryeri Analiz Paneli</p>
+    </div>
+  </div>
+  <div class="hbadge">5 Platform</div>
+</header>
+
+<main>
+  <!-- FİYAT GİRİŞİ -->
+  <div class="price-card">
+    <div class="field">
+      <label>Alış Fiyatı</label>
+      <input type="number" id="buyPrice" placeholder="0,00 ₺" min="0" step="0.01" oninput="calculate()">
+    </div>
+    <div class="field">
+      <label>Satış Fiyatı</label>
+      <input type="number" id="sellPrice" placeholder="0,00 ₺" min="0" step="0.01" oninput="calculate()">
+    </div>
+    <div class="gross-widget">
+      <span class="gw-label">Ham Kâr</span>
+      <span class="gw-val" id="grossVal">— ₺</span>
+    </div>
+  </div>
+
+  <!-- PLATFORM KARTLARI -->
+  <div class="pgrid" id="pgrid"></div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PACKAGING = 4;
+
+const PLATFORMS = [
+  {
+    key:'trendyol', name:'Trendyol', color:'#fb923c',
+    serviceFee:10.79,
+    carriers:['TEX','Kolay Gelsin'],
+    cargo:{
+      'TEX':[
+        {max:199.99,price:40.99},
+        {max:349.99,price:78.99},
+        {max:Infinity,price:112.36}
+      ],
+      'Kolay Gelsin':[
+        {max:199.99,price:61.49},
+        {max:349.99,price:98.50},
+        {max:Infinity,price:122.39}
+      ]
+    }
+  },
+  {
+    key:'hepsiburada', name:'Hepsiburada', color:'#f97316',
+    serviceFee:0,
+    carriers:['HepsiJET','Kolay Gelsin'],
+    cargo:{
+      'HepsiJET':[
+        {max:199.99,price:50.40},
+        {max:399.99,price:86.40},
+        {max:Infinity,price:112.80}
+      ],
+      'Kolay Gelsin':[
+        {max:199.99,price:50.40},
+        {max:399.99,price:86.40},
+        {max:Infinity,price:127.72}
+      ]
+    }
+  },
+  {
+    key:'n11', name:'N11', color:'#a78bfa',
+    serviceFee:7,
+    carriers:['Kolay Gelsin'],
+    cargo:{
+      'Kolay Gelsin':[
+        {max:149.99,price:61.49},
+        {max:299.99,price:98.50},
+        {max:Infinity,price:124.55}
+      ]
+    }
+  },
+  {
+    key:'pazarama', name:'Pazarama', color:'#38bdf8',
+    serviceFee:11,
+    carriers:['Kolay Gelsin'],
+    cargo:{
+      'Kolay Gelsin':[
+        {max:149.99,price:38.28},
+        {max:300,price:68.28},
+        {max:Infinity,price:125.99}
+      ]
+    }
+  },
+  {
+    key:'amazon', name:'Amazon TR', color:'#fbbf24',
+    serviceFee:0,
+    carriers:['Kolay Gelsin'],
+    cargo:{
+      'Kolay Gelsin':[
+        {max:Infinity,price:85.44}
+      ]
+    }
+  }
+];
+
+const state = {};
+PLATFORMS.forEach(p => {
+  state[p.key] = {
+    comm: localStorage.getItem('kz3_comm_'+p.key) || '',
+    carrier: localStorage.getItem('kz3_car_'+p.key) || p.carriers[0]
+  };
+});
+
+function getCargo(p, sell) {
+  const tiers = p.cargo[state[p.key].carrier] || [];
+  for (const t of tiers) if (sell <= t.max) return t.price;
+  return tiers[tiers.length-1]?.price || 0;
+}
+
+function fmt(v) {
+  return new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY',minimumFractionDigits:2}).format(v);
+}
+
+function onComm(key, val) {
+  state[key].comm = val;
+  localStorage.setItem('kz3_comm_'+key, val);
+  calculate();
+}
+
+function onCarrier(key, val) {
+  state[key].carrier = val;
+  localStorage.setItem('kz3_car_'+key, val);
+  calculate();
+}
+
+function renderGrid() {
+  document.getElementById('pgrid').innerHTML = PLATFORMS.map(p => {
+    const multi = p.carriers.length > 1;
+    const carrierHTML = multi
+      ? `<select class="carrier-sel" style="--pc:${p.color}" onchange="onCarrier('${p.key}',this.value)">
+           ${p.carriers.map(c=>`<option value="${c}"${state[p.key].carrier===c?' selected':''}>${c}</option>`).join('')}
+         </select>`
+      : `<div class="carrier-static">🚚 <b>${p.carriers[0]}</b></div>`;
+
+    return `
+    <div class="pcard" id="card_${p.key}">
+      <div class="ph" style="--pc:${p.color}">
+        <div class="ph-name">${p.name}</div>
+        <div class="comm-wrap">
+          <span>Kom.</span>
+          <input class="comm-inp" type="number" min="0" max="100" step="0.1"
+            placeholder="%" value="${state[p.key].comm}"
+            style="--pc:${p.color}"
+            oninput="onComm('${p.key}',this.value)">
+          <span class="pct-badge">%</span>
+        </div>
+        ${carrierHTML}
+      </div>
+      <div class="pb" id="body_${p.key}">
+        <div class="empty-body">
+          <div class="ei">📊</div>
+          <div class="et">Fiyat giriniz</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function calculate() {
+  const buy  = parseFloat(document.getElementById('buyPrice').value)  || 0;
+  const sell = parseFloat(document.getElementById('sellPrice').value) || 0;
+
+  // Ham kâr
+  const gv = document.getElementById('grossVal');
+  if (buy || sell) {
+    const g = sell - buy;
+    gv.textContent = fmt(g);
+    gv.className = 'gw-val ' + (g >= 0 ? 'pos' : 'neg');
+  } else {
+    gv.textContent = '— ₺';
+    gv.className = 'gw-val';
+  }
+
+  PLATFORMS.forEach(p => {
+    const body = document.getElementById('body_'+p.key);
+    if (!body) return;
+
+    if (!buy && !sell) {
+      body.innerHTML = `<div class="empty-body"><div class="ei">📊</div><div class="et">Fiyat giriniz</div></div>`;
+      return;
+    }
+
+    const comm    = parseFloat(state[p.key].comm) || 0;
+    const cargo   = getCargo(p, sell);
+    const commAmt = sell * (comm / 100);
+    const profit  = sell - buy - commAmt - cargo - PACKAGING - p.serviceFee;
+    const margin  = sell > 0 ? ((profit/sell)*100).toFixed(1) : '0.0';
+    const isPos   = profit >= 0;
+    const pc      = isPos ? 'var(--green)' : 'var(--red)';
+    const noComm  = !state[p.key].comm;
+    const carrier = state[p.key].carrier;
+
+    // Kargo kademesi göster
+    const tiers = p.cargo[carrier];
+    let tierLabel = '';
+    if (sell && tiers) {
+      if (sell <= (tiers[0]?.max || 0)) tierLabel = '1. kademe';
+      else if (tiers[1] && sell <= tiers[1].max) tierLabel = '2. kademe';
+      else tierLabel = 'Barem dışı';
+    }
+
+    body.innerHTML = `
+      <div class="pb-profit" style="color:${pc}">${fmt(profit)}</div>
+      <div class="pb-margin" style="color:${pc}">Marj: %${margin}</div>
+      ${noComm ? `<div class="pb-warn">⚠ Komisyon girilmedi</div>` : ''}
+      ${tierLabel ? `<div class="cargo-tag">🚚 ${tierLabel} · ${fmt(cargo)}</div>` : ''}
+      <div class="divider"></div>
+      <div class="bkdn">
+        <div class="brow"><span class="bl">Alış fiyatı</span><span class="bv" style="color:var(--red)">−${fmt(buy)}</span></div>
+        <div class="brow"><span class="bl">Komisyon %${comm}</span><span class="bv" style="color:var(--red)">−${fmt(commAmt)}</span></div>
+        <div class="brow"><span class="bl">Kargo</span><span class="bv" style="color:var(--red)">−${fmt(cargo)}</span></div>
+        <div class="brow"><span class="bl">Paketleme</span><span class="bv" style="color:var(--red)">−${fmt(PACKAGING)}</span></div>
+        ${p.serviceFee > 0 ? `<div class="brow"><span class="bl">Hizmet bed.</span><span class="bv" style="color:var(--red)">−${fmt(p.serviceFee)}</span></div>` : ''}
+        <div class="brow total">
+          <span class="bl">Net Kâr</span>
+          <span style="color:${pc};font-weight:700;font-size:13px">${fmt(profit)}</span>
+        </div>
+      </div>`;
+  });
+}
+
+renderGrid();
+calculate();
+</script>
+</body>
+</html>
