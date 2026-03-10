@@ -11,8 +11,7 @@
   --bg:#141928;--bg2:#1b2236;--bg3:#222b42;--bg4:#2a3450;
   --border:#2e3a58;--border2:#3a4a6b;
   --text:#e4e9f4;--text2:#a8b4cc;--text3:#6b7a99;
-  --accent:#4f8ef7;--green:#34d399;--green-bg:rgba(52,211,153,0.08);
-  --red:#f87171;--red-bg:rgba(248,113,113,0.08);--yellow:#fbbf24;
+  --accent:#4f8ef7;--green:#34d399;--red:#f87171;--yellow:#fbbf24;--purple:#a78bfa;
   --card-shadow:0 4px 24px rgba(0,0,0,0.25);
 }
 *{font-family:'Inter',sans-serif}
@@ -26,56 +25,88 @@ header{position:sticky;top:0;z-index:100;background:rgba(20,25,40,0.97);backdrop
 .logo-text p{font-size:11px;color:var(--text3);margin-top:1px}
 .hbadge{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--text3);font-weight:500}
 
-main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
+main{max-width:1120px;margin:0 auto;padding:24px 24px 80px}
 
-/* FİYAT + ARAÇLAR KARTI */
-.top-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 28px;margin-bottom:20px}
+/* TOP CARD */
+.top-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:16px}
 
 .price-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;align-items:end;margin-bottom:16px}
-
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase}
 .big-input{background:var(--bg4);border:1.5px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:19px;font-weight:600;outline:none;transition:border-color .15s,box-shadow .15s;width:100%}
 .big-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,142,247,0.15)}
 .big-input::placeholder{color:var(--text3);font-size:15px;font-weight:400}
-
 .gross-box{background:var(--bg4);border:1.5px solid var(--border2);border-radius:10px;padding:11px 14px;display:flex;flex-direction:column;gap:4px}
 .gross-box .gl{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
 .gross-box .gv{font-size:19px;font-weight:700;color:var(--text3)}
 
-/* ARAÇ SATIRI */
+/* TOOLS ROW */
 .tools-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:16px;border-top:1px solid var(--border)}
-
-.tool-box{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px}
-.tool-box .tb-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.tool-box .tb-info{flex:1;display:flex;flex-direction:column;gap:3px}
-.tool-box .tb-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
-.tool-box .tb-sub{font-size:10px;color:var(--text3)}
-.tool-box .tb-input-row{display:flex;align-items:center;gap:6px;margin-top:6px}
-.tool-inp{background:var(--bg4);border:1.5px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:14px;font-weight:600;outline:none;transition:border-color .15s;width:90px;text-align:center}
+.tool-box{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px}
+.tb-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.tb-info{flex:1;display:flex;flex-direction:column;gap:3px}
+.tb-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+.tb-sub{font-size:10px;color:var(--text3)}
+.tb-input-row{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+.tool-inp{background:var(--bg4);border:1.5px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:14px;font-weight:600;outline:none;transition:border-color .15s;width:85px;text-align:center}
 .tool-inp:focus{border-color:var(--accent)}
 .tool-inp::placeholder{color:var(--text3);font-weight:400;font-size:12px}
 .tool-inp-unit{font-size:12px;color:var(--text3);font-weight:600}
 .tool-btn{background:var(--accent);border:none;border-radius:7px;padding:7px 14px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s;white-space:nowrap}
 .tool-btn:hover{opacity:.85;transform:translateY(-1px)}
-.tool-btn:active{transform:translateY(0)}
+.extra-display{font-size:13px;font-weight:600;color:var(--text3);margin-top:6px}
+
+/* EN KARLI BANNER */
+.best-banner{display:none;background:linear-gradient(135deg,rgba(52,211,153,0.08),rgba(52,211,153,0.04));border:1px solid rgba(52,211,153,0.25);border-radius:12px;padding:14px 20px;margin-bottom:16px;align-items:center;gap:16px;flex-wrap:wrap}
+.best-banner.show{display:flex}
+.best-crown{font-size:24px}
+.best-info{flex:1}
+.best-title{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+.best-name{font-size:16px;font-weight:700;color:var(--text)}
+.best-profit{font-size:13px;color:var(--green);font-weight:600}
+.best-stats{display:flex;gap:20px;flex-wrap:wrap}
+.best-stat{display:flex;flex-direction:column;gap:2px;text-align:center}
+.best-stat .bs-label{font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.best-stat .bs-val{font-size:14px;font-weight:700;color:var(--text)}
+
+/* MIN FİYAT BANNER */
+.minfee-section{display:none;margin-bottom:16px}
+.minfee-section.show{display:block}
+.minfee-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.minfee-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.minfee-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;border-top:2px solid var(--pc)}
+.minfee-pname{font-size:10px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.minfee-val{font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
+.minfee-sub{font-size:10px;color:var(--text3)}
+
+/* HEDEF KAR BANNER */
+.target-section{display:none;margin-bottom:16px}
+.target-section.show{display:block}
+.target-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.target-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.target-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;border-top:2px solid var(--pc);position:relative}
+.target-pname{font-size:10px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.target-val{font-size:16px;font-weight:700;margin-bottom:2px}
+.target-sub{font-size:10px;color:var(--text3)}
+.target-badge{position:absolute;top:8px;right:8px;background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);border-radius:5px;padding:2px 6px;font-size:9px;font-weight:700;color:var(--green)}
 
 /* PLATFORM GRID */
+.section-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
 .pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 
-.pcard{background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pcard{background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative}
 .pcard:hover{transform:translateY(-2px);box-shadow:var(--card-shadow);border-color:var(--border2)}
+.pcard.is-best{border-color:rgba(52,211,153,0.4);box-shadow:0 0 0 1px rgba(52,211,153,0.15),var(--card-shadow)}
+.best-tag{position:absolute;top:8px;right:8px;background:var(--green);border-radius:5px;padding:2px 7px;font-size:9px;font-weight:700;color:#0a1f14;z-index:2}
 
 .ph{padding:14px 14px 12px;border-bottom:1px solid var(--border);border-top:3px solid var(--pc)}
 .ph-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px}
-
 .comm-wrap{display:flex;align-items:center;gap:6px}
 .comm-wrap span{font-size:11px;color:var(--text3);font-weight:500;white-space:nowrap}
 .comm-inp{background:var(--bg);border:1.5px solid var(--border2);border-radius:7px;padding:6px 8px;color:var(--text);font-size:14px;font-weight:600;width:60px;outline:none;text-align:center;transition:border-color .15s}
 .comm-inp:focus{border-color:var(--pc)}
 .comm-inp::placeholder{color:var(--text3);font-weight:400;font-size:12px}
 .pct-badge{font-size:12px;color:var(--text3);font-weight:600}
-
 .carrier-sel{width:100%;margin-top:8px;background:var(--bg);border:1.5px solid var(--border2);border-radius:7px;padding:6px 8px;color:var(--text);font-size:12px;font-weight:500;outline:none;cursor:pointer;transition:border-color .15s}
 .carrier-sel:focus{border-color:var(--pc)}
 .carrier-static{margin-top:8px;font-size:11px;color:var(--text3);font-weight:500;display:flex;align-items:center;gap:4px}
@@ -98,23 +129,32 @@ main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
 .empty-body .ei{font-size:28px;margin-bottom:6px;opacity:.2}
 .empty-body .et{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
 
-.pos{color:var(--green)}
-.neg{color:var(--red)}
+.pos{color:var(--green)}.neg{color:var(--red)}
+
+/* HEDEF & MİN ARAÇLAR */
+.target-tool{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:14px;border-top:1px solid var(--border);margin-top:14px}
+.tt-box{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px 16px}
+.tt-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.tt-sub{font-size:10px;color:var(--text3);margin-bottom:10px}
+.tt-row{display:flex;align-items:center;gap:8px}
+.tt-inp{background:var(--bg4);border:1.5px solid var(--border2);border-radius:7px;padding:8px 12px;color:var(--text);font-size:15px;font-weight:600;outline:none;transition:border-color .15s;width:100%}
+.tt-inp:focus{border-color:var(--accent)}
+.tt-inp::placeholder{color:var(--text3);font-weight:400;font-size:13px}
+.tt-unit{font-size:13px;color:var(--text3);font-weight:600;white-space:nowrap}
 
 .toast{position:fixed;bottom:24px;right:24px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--green);font-weight:600;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;z-index:999;box-shadow:var(--card-shadow)}
 .toast.show{opacity:1;transform:translateY(0)}
 
 @media(max-width:1000px){
-  .pgrid{grid-template-columns:repeat(3,1fr)}
+  .pgrid,.minfee-grid,.target-grid{grid-template-columns:repeat(3,1fr)}
   .price-row{grid-template-columns:1fr 1fr}
   .gross-box{display:none}
 }
 @media(max-width:640px){
   header{padding:0 16px}
   main{padding:16px 12px 60px}
-  .pgrid{grid-template-columns:repeat(2,1fr)}
-  .price-row{grid-template-columns:1fr 1fr}
-  .tools-row{grid-template-columns:1fr}
+  .pgrid,.minfee-grid,.target-grid{grid-template-columns:repeat(2,1fr)}
+  .price-row,.tools-row,.target-tool{grid-template-columns:1fr}
   .top-card{padding:16px}
 }
 </style>
@@ -133,8 +173,8 @@ main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
 </header>
 
 <main>
+  <!-- TOP CARD -->
   <div class="top-card">
-    <!-- FİYAT GİRİŞİ -->
     <div class="price-row">
       <div class="field">
         <label>Alış Fiyatı</label>
@@ -154,9 +194,8 @@ main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
       </div>
     </div>
 
-    <!-- ARAÇLAR -->
+    <!-- HIZLI KOMİSYON + EK MALİYET -->
     <div class="tools-row">
-      <!-- HIZLI KOMİSYON -->
       <div class="tool-box">
         <div class="tb-icon" style="background:rgba(79,142,247,0.15)">⚡</div>
         <div class="tb-info">
@@ -169,22 +208,61 @@ main{max-width:1120px;margin:0 auto;padding:28px 24px 80px}
           </div>
         </div>
       </div>
-
-      <!-- EK MALİYET BİLGİ -->
       <div class="tool-box">
         <div class="tb-icon" style="background:rgba(251,191,36,0.15)">📦</div>
         <div class="tb-info">
           <span class="tb-label">Ek Maliyet</span>
-          <span class="tb-sub">Etiket, ambalaj, işçilik vb. sabit gider — tüm platformlardan düşülür</span>
-          <div class="tb-input-row" style="margin-top:4px">
-            <span id="extraCostDisplay" style="font-size:13px;font-weight:600;color:var(--text3)">Girilmedi</span>
-          </div>
+          <span class="tb-sub">Etiket, ambalaj, işçilik vb. — tüm platformlardan düşülür</span>
+          <div class="extra-display" id="extraDisplay">Girilmedi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEDEF KAR + MİN FİYAT ARAÇLARI -->
+    <div class="target-tool">
+      <div class="tt-box">
+        <div class="tt-label">🎯 Hedef Kâr Marjı</div>
+        <div class="tt-sub">Alış fiyatına göre her platformda hedefi karşılayan minimum satış fiyatını hesaplar</div>
+        <div class="tt-row">
+          <input class="tt-inp" type="number" id="targetMargin" placeholder="ör. 20" min="0" max="100" step="0.1" oninput="calculate()">
+          <span class="tt-unit">% marj</span>
+        </div>
+      </div>
+      <div class="tt-box">
+        <div class="tt-label">🔒 Minimum Satış Fiyatı</div>
+        <div class="tt-sub">Alış fiyatı girildiğinde zarar etmeden satabilecek en düşük fiyatı gösterir</div>
+        <div class="tt-row">
+          <span style="font-size:13px;color:var(--text3)">Alış fiyatı girildiğinde otomatik hesaplanır ↓</span>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- EN KARLI PLATFORM BANNER -->
+  <div class="best-banner" id="bestBanner">
+    <div class="best-crown">👑</div>
+    <div class="best-info">
+      <div class="best-title">En Karlı Platform</div>
+      <div class="best-name" id="bestName">—</div>
+      <div class="best-profit" id="bestProfit">—</div>
+    </div>
+    <div class="best-stats" id="bestStats"></div>
+  </div>
+
+  <!-- MİNİMUM SATIŞ FİYATI -->
+  <div class="minfee-section" id="minSection">
+    <div class="minfee-title">🔒 Minimum Satış Fiyatı (Zarar Etmeme Noktası)</div>
+    <div class="minfee-grid" id="minGrid"></div>
+  </div>
+
+  <!-- HEDEF KAR FİYATLARI -->
+  <div class="target-section" id="targetSection">
+    <div class="target-title" id="targetTitle">🎯 Hedef Marj İçin Gerekli Satış Fiyatı</div>
+    <div class="target-grid" id="targetGrid"></div>
+  </div>
+
   <!-- PLATFORM KARTLARI -->
+  <div class="section-label">Platform Bazlı Hesaplama</div>
   <div class="pgrid" id="pgrid"></div>
 </main>
 
@@ -199,16 +277,8 @@ const PLATFORMS = [
     serviceFee:10.79,
     carriers:['TEX','Kolay Gelsin'],
     cargo:{
-      'TEX':[
-        {max:199.99,price:40.99},
-        {max:349.99,price:78.99},
-        {max:Infinity,price:112.36}
-      ],
-      'Kolay Gelsin':[
-        {max:199.99,price:61.49},
-        {max:349.99,price:98.50},
-        {max:Infinity,price:122.39}
-      ]
+      'TEX':[{max:199.99,price:40.99},{max:349.99,price:78.99},{max:Infinity,price:112.36}],
+      'Kolay Gelsin':[{max:199.99,price:61.49},{max:349.99,price:98.50},{max:Infinity,price:122.39}]
     }
   },
   {
@@ -216,59 +286,35 @@ const PLATFORMS = [
     serviceFee:0,
     carriers:['HepsiJET','Kolay Gelsin'],
     cargo:{
-      'HepsiJET':[
-        {max:199.99,price:50.40},
-        {max:399.99,price:86.40},
-        {max:Infinity,price:112.80}
-      ],
-      'Kolay Gelsin':[
-        {max:199.99,price:50.40},
-        {max:399.99,price:86.40},
-        {max:Infinity,price:127.72}
-      ]
+      'HepsiJET':[{max:199.99,price:50.40},{max:399.99,price:86.40},{max:Infinity,price:112.80}],
+      'Kolay Gelsin':[{max:199.99,price:50.40},{max:399.99,price:86.40},{max:Infinity,price:127.72}]
     }
   },
   {
     key:'n11', name:'N11', color:'#a78bfa',
     serviceFee:7,
     carriers:['Kolay Gelsin'],
-    cargo:{
-      'Kolay Gelsin':[
-        {max:149.99,price:61.49},
-        {max:299.99,price:98.50},
-        {max:Infinity,price:124.55}
-      ]
-    }
+    cargo:{'Kolay Gelsin':[{max:149.99,price:61.49},{max:299.99,price:98.50},{max:Infinity,price:124.55}]}
   },
   {
     key:'pazarama', name:'Pazarama', color:'#38bdf8',
     serviceFee:11,
     carriers:['Kolay Gelsin'],
-    cargo:{
-      'Kolay Gelsin':[
-        {max:149.99,price:38.28},
-        {max:300,price:68.28},
-        {max:Infinity,price:125.99}
-      ]
-    }
+    cargo:{'Kolay Gelsin':[{max:149.99,price:38.28},{max:300,price:68.28},{max:Infinity,price:125.99}]}
   },
   {
     key:'amazon', name:'Amazon TR', color:'#fbbf24',
     serviceFee:0,
     carriers:['Kolay Gelsin'],
-    cargo:{
-      'Kolay Gelsin':[
-        {max:Infinity,price:85.44}
-      ]
-    }
+    cargo:{'Kolay Gelsin':[{max:Infinity,price:85.44}]}
   }
 ];
 
 const state = {};
 PLATFORMS.forEach(p => {
   state[p.key] = {
-    comm: localStorage.getItem('kz4_comm_'+p.key) || '',
-    carrier: localStorage.getItem('kz4_car_'+p.key) || p.carriers[0]
+    comm: localStorage.getItem('kz5_comm_'+p.key) || '',
+    carrier: localStorage.getItem('kz5_car_'+p.key) || p.carriers[0]
   };
 });
 
@@ -278,19 +324,56 @@ function getCargo(p, sell) {
   return tiers[tiers.length-1]?.price || 0;
 }
 
+// Belirli bir satış fiyatında toplam sabit maliyeti döner (kargo dahil, komisyon hariç)
+function getFixedCosts(p, sell) {
+  return getCargo(p, sell) + PACKAGING + p.serviceFee;
+}
+
+// Minimum satış fiyatı: sell = buy + cargo(sell) + packaging + service + extra + sell*comm/100
+// sell - sell*comm/100 = buy + fixed
+// sell * (1 - comm/100) = buy + fixed  → iteratif çöz (kargo sell'e bağlı)
+function calcMinSell(p, buy, extra) {
+  const comm = parseFloat(state[p.key].comm) || 0;
+  let sell = buy + 50; // başlangıç tahmini
+  for (let i = 0; i < 50; i++) {
+    const fixed = getFixedCosts(p, sell) + extra;
+    const newSell = (buy + fixed) / (1 - comm / 100);
+    if (Math.abs(newSell - sell) < 0.01) { sell = newSell; break; }
+    sell = newSell;
+  }
+  return Math.ceil(sell * 100) / 100;
+}
+
+// Hedef marj için satış fiyatı: profit/sell = margin/100
+// (sell - buy - sell*comm/100 - fixed - extra) / sell = margin/100
+// sell*(1 - comm/100 - margin/100) = buy + fixed + extra → iteratif
+function calcTargetSell(p, buy, extra, targetMarginPct) {
+  const comm = parseFloat(state[p.key].comm) || 0;
+  let sell = buy + 100;
+  for (let i = 0; i < 50; i++) {
+    const fixed = getFixedCosts(p, sell) + extra;
+    const denom = 1 - (comm + targetMarginPct) / 100;
+    if (denom <= 0) return null; // imkânsız
+    const newSell = (buy + fixed) / denom;
+    if (Math.abs(newSell - sell) < 0.01) { sell = newSell; break; }
+    sell = newSell;
+  }
+  return Math.ceil(sell * 100) / 100;
+}
+
 function fmt(v) {
   return new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY',minimumFractionDigits:2}).format(v);
 }
 
 function onComm(key, val) {
   state[key].comm = val;
-  localStorage.setItem('kz4_comm_'+key, val);
+  localStorage.setItem('kz5_comm_'+key, val);
   calculate();
 }
 
 function onCarrier(key, val) {
   state[key].carrier = val;
-  localStorage.setItem('kz4_car_'+key, val);
+  localStorage.setItem('kz5_car_'+key, val);
   calculate();
 }
 
@@ -301,17 +384,13 @@ function applyQuickComm() {
   PLATFORMS.forEach(p => {
     if (!state[p.key].comm) {
       state[p.key].comm = val;
-      localStorage.setItem('kz4_comm_'+p.key, val);
+      localStorage.setItem('kz5_comm_'+p.key, val);
       const inp = document.getElementById('cinp_'+p.key);
       if (inp) inp.value = val;
       applied++;
     }
   });
-  if (applied === 0) {
-    showToast('Tüm platformlarda komisyon zaten girilmiş');
-  } else {
-    showToast(`✓ ${applied} platforma %${val} komisyon uygulandı`);
-  }
+  showToast(applied === 0 ? 'Tüm platformlarda komisyon zaten girilmiş' : `✓ ${applied} platforma %${val} uygulandı`);
   calculate();
 }
 
@@ -323,7 +402,6 @@ function renderGrid() {
            ${p.carriers.map(c=>`<option value="${c}"${state[p.key].carrier===c?' selected':''}>${c}</option>`).join('')}
          </select>`
       : `<div class="carrier-static">🚚 <b>${p.carriers[0]}</b></div>`;
-
     return `
     <div class="pcard" id="card_${p.key}">
       <div class="ph" style="--pc:${p.color}">
@@ -331,50 +409,133 @@ function renderGrid() {
         <div class="comm-wrap">
           <span>Kom.</span>
           <input class="comm-inp" id="cinp_${p.key}" type="number" min="0" max="100" step="0.1"
-            placeholder="%" value="${state[p.key].comm}"
-            style="--pc:${p.color}"
+            placeholder="%" value="${state[p.key].comm}" style="--pc:${p.color}"
             oninput="onComm('${p.key}',this.value)">
           <span class="pct-badge">%</span>
         </div>
         ${carrierHTML}
       </div>
       <div class="pb" id="body_${p.key}">
-        <div class="empty-body">
-          <div class="ei">📊</div>
-          <div class="et">Fiyat giriniz</div>
-        </div>
+        <div class="empty-body"><div class="ei">📊</div><div class="et">Fiyat giriniz</div></div>
       </div>
     </div>`;
   }).join('');
 }
 
 function calculate() {
-  const buy   = parseFloat(document.getElementById('buyPrice').value)  || 0;
-  const sell  = parseFloat(document.getElementById('sellPrice').value) || 0;
-  const extra = parseFloat(document.getElementById('extraCost').value) || 0;
+  const buy    = parseFloat(document.getElementById('buyPrice').value)    || 0;
+  const sell   = parseFloat(document.getElementById('sellPrice').value)   || 0;
+  const extra  = parseFloat(document.getElementById('extraCost').value)   || 0;
+  const target = parseFloat(document.getElementById('targetMargin').value)|| 0;
 
   // Ham kâr
   const gv = document.getElementById('grossVal');
   if (buy || sell) {
     const g = sell - buy;
     gv.textContent = fmt(g);
-    gv.className = 'gv ' + (g >= 0 ? 'pos' : 'neg');
-  } else {
-    gv.textContent = '— ₺';
-    gv.className = 'gv';
-  }
+    gv.className = 'gv '+(g>=0?'pos':'neg');
+  } else { gv.textContent='— ₺'; gv.className='gv'; }
 
-  // Ek maliyet göstergesi
-  const ed = document.getElementById('extraCostDisplay');
-  if (extra > 0) {
-    ed.textContent = '−' + fmt(extra) + ' tüm platformlardan düşülüyor';
-    ed.style.color = 'var(--yellow)';
-  } else {
-    ed.textContent = 'Girilmedi';
-    ed.style.color = 'var(--text3)';
-  }
+  // Ek maliyet göster
+  const ed = document.getElementById('extraDisplay');
+  ed.textContent = extra > 0 ? `−${fmt(extra)} tüm platformlardan düşülüyor` : 'Girilmedi';
+  ed.style.color = extra > 0 ? 'var(--yellow)' : 'var(--text3)';
 
+  // Platform hesapları
+  const results = [];
   PLATFORMS.forEach(p => {
+    const comm    = parseFloat(state[p.key].comm) || 0;
+    const cargo   = getCargo(p, sell);
+    const commAmt = sell * (comm / 100);
+    const profit  = sell - buy - commAmt - cargo - PACKAGING - p.serviceFee - extra;
+    const margin  = sell > 0 ? (profit/sell)*100 : 0;
+    results.push({p, comm, cargo, commAmt, profit, margin});
+  });
+
+  // EN KARLI PLATFORM
+  const banner = document.getElementById('bestBanner');
+  if (buy || sell) {
+    const valid = results.filter(r => r.profit !== null);
+    const best = valid.reduce((a,b) => b.profit > a.profit ? b : a, valid[0]);
+    banner.classList.add('show');
+    document.getElementById('bestName').textContent = best.p.name;
+    document.getElementById('bestProfit').textContent = `Net Kâr: ${fmt(best.profit)} · Marj: %${best.margin.toFixed(1)}`;
+
+    // Tüm karşılaştırma
+    const statsHTML = results.map(r => `
+      <div class="best-stat">
+        <span class="bs-label" style="color:${r.p.color}">${r.p.name}</span>
+        <span class="bs-val" style="color:${r.profit>=0?'var(--green)':'var(--red)'}">${fmt(r.profit)}</span>
+      </div>`).join('');
+    document.getElementById('bestStats').innerHTML = statsHTML;
+
+    // Kart vurgulama
+    PLATFORMS.forEach(p => {
+      const card = document.getElementById('card_'+p.key);
+      const tag = card.querySelector('.best-tag');
+      if (tag) tag.remove();
+      card.classList.remove('is-best');
+    });
+    const bestCard = document.getElementById('card_'+best.p.key);
+    bestCard.classList.add('is-best');
+    const tag = document.createElement('div');
+    tag.className = 'best-tag';
+    tag.textContent = '👑 En Karlı';
+    bestCard.appendChild(tag);
+  } else {
+    banner.classList.remove('show');
+    PLATFORMS.forEach(p => {
+      const card = document.getElementById('card_'+p.key);
+      const tag = card.querySelector('.best-tag');
+      if (tag) tag.remove();
+      card.classList.remove('is-best');
+    });
+  }
+
+  // MİNİMUM SATIŞ FİYATI
+  const minSection = document.getElementById('minSection');
+  if (buy > 0) {
+    minSection.classList.add('show');
+    document.getElementById('minGrid').innerHTML = PLATFORMS.map(p => {
+      const minSell = calcMinSell(p, buy, extra);
+      const comm = parseFloat(state[p.key].comm) || 0;
+      return `
+        <div class="minfee-card" style="--pc:${p.color}">
+          <div class="minfee-pname">${p.name}</div>
+          <div class="minfee-val">${fmt(minSell)}</div>
+          <div class="minfee-sub">%${comm} komisyon dahil</div>
+        </div>`;
+    }).join('');
+  } else {
+    minSection.classList.remove('show');
+  }
+
+  // HEDEF KAR FİYATI
+  const targetSection = document.getElementById('targetSection');
+  if (buy > 0 && target > 0) {
+    targetSection.classList.add('show');
+    document.getElementById('targetTitle').textContent = `🎯 %${target} Marj İçin Gerekli Minimum Satış Fiyatı`;
+    document.getElementById('targetGrid').innerHTML = PLATFORMS.map(p => {
+      const tSell = calcTargetSell(p, buy, extra, target);
+      const comm = parseFloat(state[p.key].comm) || 0;
+      const achievable = tSell !== null;
+      const currentOk = sell > 0 && tSell !== null && sell >= tSell;
+      return `
+        <div class="target-card" style="--pc:${p.color}">
+          ${currentOk ? `<div class="target-badge">✓ Hedefte</div>` : ''}
+          <div class="target-pname">${p.name}</div>
+          <div class="target-val" style="color:${achievable?(currentOk?'var(--green)':'var(--text)'):'var(--red)'}">
+            ${achievable ? fmt(tSell) : 'Hesplanamaz'}
+          </div>
+          <div class="target-sub">${achievable ? `%${comm} komisyon dahil` : 'Komisyon + marj > 100%'}</div>
+        </div>`;
+    }).join('');
+  } else {
+    targetSection.classList.remove('show');
+  }
+
+  // PLATFORM KART BODY
+  results.forEach(({p, comm, cargo, commAmt, profit, margin}) => {
     const body = document.getElementById('body_'+p.key);
     if (!body) return;
 
@@ -383,41 +544,32 @@ function calculate() {
       return;
     }
 
-    const comm    = parseFloat(state[p.key].comm) || 0;
-    const cargo   = getCargo(p, sell);
-    const commAmt = sell * (comm / 100);
-    const profit  = sell - buy - commAmt - cargo - PACKAGING - p.serviceFee - extra;
-    const margin  = sell > 0 ? ((profit/sell)*100).toFixed(1) : '0.0';
     const isPos   = profit >= 0;
     const pc      = isPos ? 'var(--green)' : 'var(--red)';
     const noComm  = !state[p.key].comm;
     const carrier = state[p.key].carrier;
-
-    const tiers = p.cargo[carrier];
+    const tiers   = p.cargo[carrier];
     let tierLabel = '';
     if (sell && tiers) {
-      if (sell <= (tiers[0]?.max || 0)) tierLabel = '1. kademe';
-      else if (tiers[1] && sell <= tiers[1].max) tierLabel = '2. kademe';
-      else tierLabel = 'Barem dışı';
+      if (sell <= (tiers[0]?.max||0)) tierLabel='1. kademe';
+      else if (tiers[1] && sell <= tiers[1].max) tierLabel='2. kademe';
+      else tierLabel='Barem dışı';
     }
 
     body.innerHTML = `
       <div class="pb-profit" style="color:${pc}">${fmt(profit)}</div>
-      <div class="pb-margin" style="color:${pc}">Marj: %${margin}</div>
-      ${noComm ? `<div class="pb-warn">⚠ Komisyon girilmedi</div>` : ''}
-      ${tierLabel ? `<div class="cargo-tag">🚚 ${tierLabel} · ${fmt(cargo)}</div>` : ''}
+      <div class="pb-margin" style="color:${pc}">Marj: %${margin.toFixed(1)}</div>
+      ${noComm?`<div class="pb-warn">⚠ Komisyon girilmedi</div>`:''}
+      ${tierLabel?`<div class="cargo-tag">🚚 ${tierLabel} · ${fmt(cargo)}</div>`:''}
       <div class="divider"></div>
       <div class="bkdn">
         <div class="brow"><span class="bl">Alış fiyatı</span><span class="bv" style="color:var(--red)">−${fmt(buy)}</span></div>
         <div class="brow"><span class="bl">Komisyon %${comm}</span><span class="bv" style="color:var(--red)">−${fmt(commAmt)}</span></div>
         <div class="brow"><span class="bl">Kargo</span><span class="bv" style="color:var(--red)">−${fmt(cargo)}</span></div>
         <div class="brow"><span class="bl">Paketleme</span><span class="bv" style="color:var(--red)">−${fmt(PACKAGING)}</span></div>
-        ${p.serviceFee > 0 ? `<div class="brow"><span class="bl">Hizmet bed.</span><span class="bv" style="color:var(--red)">−${fmt(p.serviceFee)}</span></div>` : ''}
-        ${extra > 0 ? `<div class="brow"><span class="bl">Ek maliyet</span><span class="bv" style="color:var(--red)">−${fmt(extra)}</span></div>` : ''}
-        <div class="brow total">
-          <span class="bl">Net Kâr</span>
-          <span style="color:${pc};font-weight:700;font-size:13px">${fmt(profit)}</span>
-        </div>
+        ${p.serviceFee>0?`<div class="brow"><span class="bl">Hizmet bed.</span><span class="bv" style="color:var(--red)">−${fmt(p.serviceFee)}</span></div>`:''}
+        ${extra>0?`<div class="brow"><span class="bl">Ek maliyet</span><span class="bv" style="color:var(--red)">−${fmt(extra)}</span></div>`:''}
+        <div class="brow total"><span class="bl">Net Kâr</span><span style="color:${pc};font-weight:700;font-size:13px">${fmt(profit)}</span></div>
       </div>`;
   });
 }
@@ -426,7 +578,7 @@ function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  setTimeout(()=>t.classList.remove('show'), 2800);
 }
 
 renderGrid();
